@@ -1,3 +1,3 @@
 # My-leetcode-solutions-
-My leetcode solutions for my boss and employers
+My LeetCode solutions : "Trying to be better"
 ## Keep the core , adapt the rest 
