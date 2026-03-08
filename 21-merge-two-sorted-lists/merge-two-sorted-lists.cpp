@@ -12,63 +12,38 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        if (list1 == nullptr && list2 == nullptr) {
-            return nullptr;
-        }
-        if (list1 == nullptr && list2 != nullptr) {
+        if (list1 == nullptr) {
             return list2;
         }
-        if (list1 != nullptr && list2 == nullptr) {
+        if (list2 == nullptr) {
             return list1;
         }
-        ListNode* p1 = list1;
-        ListNode* p2 = list2;
-
-        vector<int> res1;
-        vector<int> res2;
-
-        while (p1 != nullptr){
-            res1.push_back(p1->val);
-            p1 = p1->next;
-        }
-        while (p2 != nullptr) {
-            res2.push_back(p2->val);
-            p2 = p2 -> next;
+        if (list1 ==nullptr && list2 == nullptr) {
+            return nullptr;
         }
 
-        int left = 0;
-        int right = 0;
-        int n = res1.size();
-        int m = res2.size();
-
-        vector<int> p3;
-        while (left < n && right < m) {
-            if (res1[left] < res2[right]) {
-                p3.push_back(res1[left]); 
-                left ++;
+        ListNode *l1 = list1;
+        ListNode *l2 = list2;
+        ListNode *res = new ListNode(0);
+        ListNode *p = res;
+        while (l1 != nullptr && l2 != nullptr) {
+            if (l1->val <= l2->val) {
+                p->next = l1;
+                l1 = l1->next;
             }
             else {
-                p3.push_back(res2[right]);
-                right ++ ;
+                p->next = l2;
+                l2 = l2->next;
             }
-        }
-        while (left < n) {
-            p3.push_back(res1[left]);
-            left ++;
-        }
-        while (right < m){
-            p3.push_back(res2[right]) ;
-            right++;
+            p = p->next;
         }
 
-        ListNode* phat = new ListNode(p3[0]);
-        ListNode* temp = phat ;
-
-        for (int i = 1 ; i < p3.size() ; i++) {
-            ListNode* arr = new ListNode(p3[i]);
-            temp->next = arr;
-            temp = arr;
+        if (l1 != nullptr) {
+            p->next = l1;
         }
-        return phat;
+        else if (l2 != nullptr) 
+            p->next = l2;
+
+        return res->next;
     }
 };
