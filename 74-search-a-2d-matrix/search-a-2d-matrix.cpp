@@ -1,6 +1,7 @@
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        if (matrix.empty()) return false;
         int row = matrix.size();
         int col = matrix[0].size();
         if (matrix[0][0] == target) return true;
