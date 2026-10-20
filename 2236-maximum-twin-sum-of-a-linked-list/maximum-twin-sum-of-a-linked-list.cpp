@@ -24,7 +24,7 @@ public:
 
     ListNode* reverse_n(ListNode* head) {
         if (head == nullptr) return nullptr;
-        cout << length_n(head) << endl; 
+
         ListNode* curr = head;
         ListNode* prev = nullptr;
         while (curr->next != nullptr) {
