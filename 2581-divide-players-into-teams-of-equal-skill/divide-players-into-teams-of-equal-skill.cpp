@@ -1,10 +1,5 @@
 class Solution {
 public:
-    void print(vector<int>& a) {
-        for (int i : a) cout << i << " " ;
-        cout << endl;
-    }
-
     long long dividePlayers(vector<int>& skill) {
         int n = skill.size() / 2;
         if (skill.empty()) return -1;
@@ -26,8 +21,6 @@ public:
         if (res != skill) return -1;
 
         reverse(skill.begin() , skill.end());
-        print(res);
-        print(skill);
         int left = 0;
         int right = 0;
         long long phat = 0;
